@@ -1,4 +1,4 @@
-*Automate Cellulaire et distributions de populations*
+**Automate Cellulaire et distributions de populations**
 ==
 
 Le but du projet était de créer un automate cellulaire sur la base des règles
@@ -52,19 +52,27 @@ générations consécutives chacunes.
 La valeur retenue pour chaque simulation était la proportion de cellules
 "vivantes" occupant la grille après les 50 générations consécutives.
 
-Le projet demandant de gérer un grand nombre de données, j'ai stocké toutes les mesures dans une matrice numpy à 5 dimensions, puis j'ai utilisé la fonction dump() de numpy qui écrit et sauvegarde un objet numpy dans un fichier texte.
+Le projet demandant de gérer un grand nombre de données, j'ai stocké toutes les mesures dans une matrice numpy à 5 dimensions, puis j'ai utilisé la fonction `dump()` de numpy qui écrit et sauvegarde un objet numpy dans un fichier texte.
 
     stats.dump("matrice_cell_auto.txt")
 
 Pour récupérer la matrice à partir du fichier créé, j'ai utilisé la fonction
-load() de numpy, qui permet de charger un objet numpy à partir d'un fichier texte.
+`load()` de numpy, qui permet de charger un objet numpy à partir d'un fichier texte.
 
     import numpy as np
     stats = np.load("matrice_cell_auto.txt")
 
-Pour réaliser les représentations graphique j'ai utilisé la fonction distplot()
-du module seaborn, et le module pyplot de matplotlib.
+Pour réaliser les représentations graphique j'ai utilisé la fonction `distplot()` du module seaborn, et le module pyplot de matplotlib.
+Par exemple :
 
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    a = np.load("matrice_cell_auto.txt")
+    sns.distplot(a[0,0,0,0,:], hist = 0, color =(0,0,0.25), label = "bonjour")
+    #On signifie que hist=0 pour avoir seulement les courbes des distributions
+    plt.legend(loc = 0) #avec 0 pour la meilleure position de légendes
+    plt.show()
 
 Hypothèses
 --
