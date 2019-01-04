@@ -68,13 +68,13 @@ def proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_in
     return np.mean(final_gen)
 
 if __name__ == "__main__":
-    NB_GENERATION = 50
     TAILLE_GRILLE = (100,100)
-    NB_SURVIES = [2,3] #range(0,9)
-    NB_SURPOPULATION = [4,6] #range(1,9)
-    NB_NAISSANCE = [3] #range(1,9)
+    NB_SURVIES = range(0,9)
+    NB_SURPOPULATION = range(1,9)
+    NB_NAISSANCE = range(1,9)
     PROP_INITIALE = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
     N_SIM = 100
+    NB_GENERATION = 50
     stats = np.zeros((len(NB_SURVIES),len(NB_SURPOPULATION), len(NB_NAISSANCE), len(PROP_INITIALE), N_SIM))
 
     for i_surv, nb_survie in enumerate(NB_SURVIES):
@@ -88,4 +88,5 @@ if __name__ == "__main__":
     FIN
     """)
 
+stats.dump("matrice_cell_auto.txt")
 #utiliser sns.distplot pour faire les graphs
