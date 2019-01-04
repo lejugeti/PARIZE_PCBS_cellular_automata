@@ -25,7 +25,7 @@ proprement parler contenu dans "cell_auto.py", un algorithmes créé pour
 réaliser les représentations graphiques des distributions de proportions de
 population, et un algorithme de test contenu dans "test.py" incluant une
 interface graphique pygame qui m'a aidé à la création et au debogage de mon
-algorithme final.
+algorithme final (jouer avec la représentation graphique était très amusant par ailleurs pour voir les progressions des populations).
 
 Comme je l'ai dit plus haut le but était de comparer des distributions de populations créées par l'automate à partir d'un nombre fini de population initiales et de générations successives, tous deux déterminés arbitrairement.
 
