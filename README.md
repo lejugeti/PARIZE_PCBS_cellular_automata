@@ -1,6 +1,7 @@
 *Automate Cellulaire et distributions de populations*
+==
 
-    Le but du projet était de créer un automate cellulaire sur la base des règles
+Le but du projet était de créer un automate cellulaire sur la base des règles
 de l'automate de Cohen, puis de comparer des distributions de populations.
 Cet automate se base sur une population initiale de cellules distribuées sur
 une grille de 100 cases par 100, et conçoit les générations futures en fontion
@@ -14,7 +15,7 @@ directement adjacentes à la case d'intérêt, et va déterminer son état, à s
         """scanne les 8 cellules environnantes et renvoie le nombre de cellules vivantes"""
         return np.sum(pop[(m-1):(m+2), (n-1) : (n+2)]) - pop[m,n]
 
-    L'ensemble des règles utilisées par l'algorithme sont listées ci-dessous :
+L'ensemble des règles utilisées par l'algorithme sont listées ci-dessous :
 - Le nombre de cellules nécessaire pour la survie d'une cellule
 - Le nombre de cellules nécessaire à la naissance d'une cellule
 - Le nombre de cellules entraînant une mort par surpopulation
@@ -60,14 +61,15 @@ load() de numpy, qui permet de charger un objet numpy à partir d'un fichier tex
 
     import numpy as np
     stats = np.load("matrice_cell_auto.txt")
-    
+
 Pour réaliser les représentations graphique j'ai utilisé la fonction distplot()
 du module seaborn, et le module pyplot de matplotlib.
 
 
-Hypothèses :
+Hypothèses
+--
 
-1 ) plus le nb de survie augmente plus la prop est grande
-2 ) plus le nb nécessaire pour les naissance augmente moins la prop est grande
-3 ) plus le nb de surpopulation est grand plus la proportion sera grande
-4 ) plus la proportion initiale sera haute plus la proportion finale sera grande saufpour la plus haute valeur 0.9 car surpopulation.
+- 1 ) plus le nb de survie augmente plus la prop est grande
+- 2 ) plus le nb nécessaire pour les naissance augmente moins la prop est grande
+- 3 ) plus le nb de surpopulation est grand plus la proportion sera grande
+- 4 ) plus la proportion initiale sera haute plus la proportion finale sera grande saufpour la plus haute valeur 0.9 car surpopulation.
