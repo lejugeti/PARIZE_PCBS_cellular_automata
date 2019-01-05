@@ -2,13 +2,37 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-a = np.load("matrice_cell_auto.txt")
+a = np.load("matrice_cell_auto.txt")3
 
+#plots pour la survie
+for i_surpop in [5,7]: #nb surpopulation 4 et 6
+    for i_naiss in [1,2]: #nb pour naissance 2 et 3
+        for i_surv in range(0,9):
+            sns.distplot(a[i_surv, i_surpop,i_naiss,3,:], hist = 0, color =(random(),random(),random()), label = f'i_surv = {i_surv}')
+        plt.legend(loc = 0)
+        plt.show()
 
-sns.distplot(a[0,0,0,0,:], hist = 0, color =(0,0,0.25), label = "beebe")
-sns.distplot(a[0,1,0,0,:],  hist = 0,color =(0,0,0.5), label = "allez")
-sns.distplot(a[1,0,0,0,:], hist = 0, color =(0,0,0.75), label = "bim")
-sns.distplot(a[1,1,0,0,:], hist = 0, color =(0,0,1), label = "message")
+#plot pour les naissances
+for i_surv in [1,3]: #nb de naissance 2 et 4
+    for i_surpop in [3,5]: #nb de survie 2 et 3
+        for i_naiss in range(1,9):
+            sns.distplot(a[i_surv, i_surpop,i_naiss,3,:], hist = 0, color =(random(),random(),random()), label = f'i_naiss = {i_naiss}')
+        plt.legend(loc = 0)
+        plt.show()
 
-plt.legend(loc = 0)
-plt.show()
+#plot pour la surpopulation
+for i_surv in [1,3]: #nb de naissance 2 et 4
+    for i_naiss in [1,2]: #nb pour naissance 2 et 3
+        for i_surpop in range(0,9):
+            sns.distplot(a[i_surv, i_surpop,i_naiss,3,:], hist = 0, color =(random(),random(),random()), label = f'i_surpop = {i_surpop}')
+        plt.legend(loc = 0)
+        plt.show()
+
+#plot pour la proportion initiale
+for i_surv in [1,3]: #nb de naissance 2 et 4
+    for i_surpop in [3,5]: #nb de survie 2 et 3
+        for i_naiss in [1,2]: #nb pour naissance 2 et 3
+            for i_prop in range(0,8):
+                sns.distplot(a[i_surv, i_surpop,i_naiss,3,:], hist = 0, color =(random(),random(),random()), label = f'i_surpop = {i_surpop}')
+            plt.legend(loc = 0)
+            plt.show()

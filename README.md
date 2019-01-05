@@ -78,6 +78,6 @@ Hypothèses
 --
 
 - 1 ) plus le nb de survie augmente plus la prop est grande
-- 2 ) plus le nb nécessaire pour les naissance augmente moins la prop est grande
-- 3 ) plus le nb de surpopulation est grand plus la proportion sera grande
-- 4 ) plus la proportion initiale sera haute plus la proportion finale sera grande saufpour la plus haute valeur 0.9 car surpopulation.
+- 2 ) plus le nb nécessaire pour les naissances augmente moins la proportion finale est grande
+- 3 ) plus le nb pour avoir une surpopulation sera grand plus la proportion sera grande
+- 4 ) plus la proportion initiale sera haute plus la proportion finale sera grande sauf pour la plus haute valeur 0.9 car surpopulation.

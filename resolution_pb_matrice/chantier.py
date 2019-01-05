@@ -44,7 +44,7 @@ def final_generations(pop, nb_survie, nb_surpopulation, nb_naissance, NB_GENERAT
     """renvoie la dernière generation des n generations définies au préalable"""
     for i_generation in range(NB_GENERATION):
         pop = next_generation(pop, nb_survie, nb_surpopulation, nb_naissance)
-        if np.mean(pop) == 0 or np.mean(pop) == 1:
+        if np.mean(pop) == 0:
             break
     return pop
 
@@ -66,12 +66,12 @@ if __name__ == "__main__":
 
 
     TAILLE_GRILLE = (100,100)
-    NB_SURVIES = range(1,9)
-    NB_SURPOPULATION = range(0,9)
-    NB_NAISSANCE = range(1,9)
-    PROP_INITIALE = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    NB_SURVIES = [2]
+    NB_SURPOPULATION = [3,4]
+    NB_NAISSANCE = [3]
+    PROP_INITIALE = [0.4, 0.5]
     N_SIM = 100
-    NB_GENERATION = 50
+    NB_GENERATION = 20
     DECOMPTE_MESURES = len(NB_SURVIES)*len(NB_SURPOPULATION)*len(NB_NAISSANCE)*len(PROP_INITIALE)*N_SIM
     stats = np.zeros((len(NB_SURVIES),len(NB_SURPOPULATION), len(NB_NAISSANCE), len(PROP_INITIALE), N_SIM))
 
@@ -81,12 +81,13 @@ if __name__ == "__main__":
             for i_naiss, nb_naissance in enumerate(NB_NAISSANCE):
                 for i_prop, proportion_initiale in enumerate(PROP_INITIALE):
                     for i_sim in range(N_SIM):
+                        #print(nb_survie, nb_surpopulation, nb_naissance)
                         stats[i_surv, i_surpop, i_naiss, i_prop, i_sim] = proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE)
                         compteur += 1
-                        print(f'{round(compteur*100/DECOMPTE_MESURES, 2)} %    prop = {stats[i_surv, i_surpop, i_naiss, i_prop, i_sim]}')
+                        print(f'{round(compteur*100/DECOMPTE_MESURES, 2)}%   prop = {stats[i_surv, i_surpop, i_naiss, i_prop, i_sim]}')
                         #utile pour voir la progression de l'algorithme
 
-stats.dump("matrice_cell_auto.txt")
+stats.dump("matrice_test_plot.txt")
 
 print("""
 FIN
