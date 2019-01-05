@@ -2,7 +2,7 @@ import numpy as np
 from math import sqrt
 import matplotlib.pyplot as plt
 import seaborn as sns
-from  joblib import Memory
+from joblib import Memory
 
 
 def first_gen(proportion, shape):
@@ -66,11 +66,11 @@ if __name__ == "__main__":
         return np.mean(final_gen)
 
     TAILLE_GRILLE = (100,100)
-    NB_SURVIES = range(0,9)
-    NB_SURPOPULATION = range(1,9)
-    NB_NAISSANCE = range(1,9)
-    PROP_INITIALE = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-    N_SIM = 100
+    NB_SURVIES = [2,3]#range(0,9)
+    NB_SURPOPULATION =[3,6] ##range(1,9)
+    NB_NAISSANCE =[3] #range(1,9)
+    PROP_INITIALE =[0.1] #[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    N_SIM = 20 #100
     NB_GENERATION = 50
     DECOMPTE_MESURES = len(NB_SURVIES)*len(NB_SURPOPULATION)*len(NB_NAISSANCE)*len(PROP_INITIALE)*N_SIM
     stats = np.zeros((len(NB_SURVIES),len(NB_SURPOPULATION), len(NB_NAISSANCE), len(PROP_INITIALE), N_SIM))
@@ -85,10 +85,8 @@ if __name__ == "__main__":
                         stats[i_surv, i_surpop, i_naiss, i_prop, i_sim] = proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE)
                         compteur += 1
                         print(f'{compteur*100/DECOMPTE_MESURES} %')
+    print("""
+    FIN
+    """)
 
-
-stats.dump("matrice_cell_auto.txt")
-
-print("""
-FIN
-""")
+stats.dump("matrice_test_joblib.txt")
