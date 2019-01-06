@@ -38,7 +38,6 @@ def next_generation(pop, nb_survie, nb_surpopulation, nb_naissance) :
             else:
                 if compteur_vie >= nb_naissance :
                     new[ligne,colonne] = 1
-
     return new
 
 def final_generations(pop, nb_survie, nb_surpopulation, nb_naissance, NB_GENERATION):

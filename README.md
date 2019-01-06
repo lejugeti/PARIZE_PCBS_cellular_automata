@@ -81,3 +81,10 @@ Hypothèses
 - 2 ) plus le nb nécessaire pour les naissances augmente moins la proportion finale est grande
 - 3 ) plus le nb pour avoir une surpopulation sera grand plus la proportion sera grande
 - 4 ) plus la proportion initiale sera haute plus la proportion finale sera grande sauf pour la plus haute valeur 0.9 car surpopulation.
+
+Résultats
+--
+
+Malheureusement, comme le programme demande une grande puissance de calcul et prend beaucoup de temps, je n'ai pas pu calculer les données. J'ai essayé d'implémenter la mise en cache proposé par le module joblib, mais le programme ne calculait pas correctement les valeurs. En fait, il assignait la même valeur à toutes les simulations, j'ai donc abandonné. Il serait néanmoins intéressant d'implémenter cette mise en cache et un traitement parallèle des calculs grâce à ce module pour pouvoir réaliser les simulations.
+
+Comme je n'ai pas pu calculer les données par manque de puissance de calcul, j'ai réalisé un fichier d'exemple de plot possible dans le dossier "exemple_de_graphs". En faisant tourner le fichier exemple_distplot.py, vous aurez un aperçu des distributions des proportions de cellules.
