@@ -87,4 +87,13 @@ Résultats
 
 Malheureusement, comme le programme demande une grande puissance de calcul et prend beaucoup de temps, je n'ai pas pu calculer les données. J'ai essayé d'implémenter la mise en cache proposé par le module joblib, mais le programme ne calculait pas correctement les valeurs. En fait, il assignait la même valeur à toutes les simulations, j'ai donc abandonné. Il serait néanmoins intéressant d'implémenter cette mise en cache et un traitement parallèle des calculs grâce à ce module pour pouvoir réaliser les simulations.
 
-Comme je n'ai pas pu calculer les données par manque de puissance de calcul, j'ai réalisé un fichier d'exemple de plot possible dans le dossier "exemple_de_graphs". En faisant tourner le fichier exemple_distplot.py, vous aurez un aperçu des distributions des proportions de cellules.
+Comme je n'ai pas pu calculer les données par manque de puissance de calcul, j'ai réalisé un fichier d'exemple de plot possible dans le dossier "exemple_de_graphs". En faisant tourner le fichier "exemple_plot.py", vous aurez un aperçu des distributions des proportions de cellules pour toutes les valeurs de survie en fonction de variables fixées arbitrairement. J'avais prévu au départ de limiter les graphs à certaines valeurs de survie, naissance, surpopulation et proportions initiales comme en témoigne le fichier "distplot.py", et c'est donc un peu ce que j'ai fait dans "exemple_plot.py".
+Il serait intéressant de réaliser des stats sur les données pour voir si les distributions sont différentes, et si leur dispersion le sont également, comme le suggèrent les graphs générés par "exemple_plot.py".
+
+
+Ce que j'ai appris avec ce projet
+--
+En créant ce projet j'ai appris à manipuler numpy et les array du module. J'ai aussi pu voir des affichages graphiques simples grâce à pygame.
+J'ai aussi été légèrement introduit aux représentation graphiques des données avec matplotlib.pyplot et seaborn.
+
+J'ai aussi appris à "manipuler" github grâce au terminal. Je trouve ça super car ça m'a vraiment facilité la vie pendant les vacances, comme je travaillais tantôt sur un pc chez moi tantôt sur un autre lorsque j'étais en déplacement. J'aimerais bien faire un projet plus important et en groupe pour continuer à l'utiliser et à apprendre comment ça fonctionne (créer plusieurs branche, les fusionner ou même revenir à une version précédente du projet), car je n'ai pour l'instant utilisé que peu de commandes.
