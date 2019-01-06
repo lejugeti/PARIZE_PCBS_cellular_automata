@@ -1,8 +1,9 @@
+"""programme d'exemple où l'on calcule les proportions de population en fonction de toutes les valeurs
+de survie possibles. Les données seront représentées graphiquement par le programme exemple_plot.py"""
+
 import numpy as np
 from math import sqrt
-import matplotlib.pyplot as plt
-import seaborn as sns
-#from  joblib import Memory
+
 
 
 def first_gen(proportion, shape):
@@ -52,10 +53,7 @@ def scan(m,n, pop):
     """scanne les 8 cellules environnantes et renvoie le nombre de cellules vivantes"""
     return np.sum(pop[(m-1):(m+2), (n-1) : (n+2)]) - pop[m,n]
 
-#On crée un décorateur pour proportion_moyenne grâce à Memory de joblib pour
-#mettre en cache les calculs déjà effectués comme il y a bcp de calculs à faire
-#memory = Memory('cache_cell_auto', verbose = 0)
-#@memory.cache
+
 def proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE):
     """renvoie la proportion moyenne de la population finale après N générations"""
     pop = first_gen(proportion_initiale, TAILLE_GRILLE)
@@ -66,13 +64,14 @@ if __name__ == "__main__":
 
 
     TAILLE_GRILLE = (100,100)
-    NB_SURVIES = [2]
+    NB_SURVIES = range(1,9)
     NB_SURPOPULATION = [3,4]
     NB_NAISSANCE = [3]
     PROP_INITIALE = [0.4, 0.5]
     N_SIM = 100
     NB_GENERATION = 20
     DECOMPTE_MESURES = len(NB_SURVIES)*len(NB_SURPOPULATION)*len(NB_NAISSANCE)*len(PROP_INITIALE)*N_SIM
+
     stats = np.zeros((len(NB_SURVIES),len(NB_SURPOPULATION), len(NB_NAISSANCE), len(PROP_INITIALE), N_SIM))
 
     compteur = 0
@@ -81,7 +80,6 @@ if __name__ == "__main__":
             for i_naiss, nb_naissance in enumerate(NB_NAISSANCE):
                 for i_prop, proportion_initiale in enumerate(PROP_INITIALE):
                     for i_sim in range(N_SIM):
-                        #print(nb_survie, nb_surpopulation, nb_naissance)
                         stats[i_surv, i_surpop, i_naiss, i_prop, i_sim] = proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE)
                         compteur += 1
                         print(f'{round(compteur*100/DECOMPTE_MESURES, 2)}%   prop = {stats[i_surv, i_surpop, i_naiss, i_prop, i_sim]}')

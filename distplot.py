@@ -1,10 +1,14 @@
+"""programme générant les représentations graphiques des distributions de proportion de
+population pour les différentes hypothèses énoncées dans le README.md"""
+
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+from numpy.random import random
 
-a = np.load("matrice_cell_auto.txt")3
+a = np.load("matrice_cell_auto.txt")
 
-#plots pour la survie
+#plot pour la survie
 for i_surpop in [5,7]: #nb surpopulation 4 et 6
     for i_naiss in [1,2]: #nb pour naissance 2 et 3
         for i_surv in range(0,9):

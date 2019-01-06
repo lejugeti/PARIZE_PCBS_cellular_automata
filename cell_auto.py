@@ -1,8 +1,9 @@
+"""Programme simulant des proportions de population 100 fois pour chaque valeur des règles de l'automate.
+
+Les résultats sont stockés dans un document texte pour pouvoir être réutilisés plus tard."""
+
 import numpy as np
 from math import sqrt
-import matplotlib.pyplot as plt
-import seaborn as sns
-#from  joblib import Memory
 
 
 def first_gen(proportion, shape):
