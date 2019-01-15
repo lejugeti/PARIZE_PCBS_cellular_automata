@@ -2,7 +2,7 @@ import numpy as np
 import pygame
 from math import sqrt
 BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+WHITE = (255,255,255)
 
 WIDTH,HEIGHT = 500,500
 cote = 5    #coté des carrés affichés
