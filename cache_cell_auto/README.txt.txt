@@ -1,0 +1,1 @@
+Ce dossier contiendra toute la mise en cache du l'automate cellulaire et sera très conséquent. Ne pas essayer d'upload le cache sur github lorsqu'il est rempli. Préférer calculer toutes les données et ensuite upload le résultat sans le cache.
