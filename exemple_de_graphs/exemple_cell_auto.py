@@ -5,7 +5,6 @@ import numpy as np
 from math import sqrt
 
 
-
 def first_gen(proportion, shape):
     """ retourne un vecteur mélangé à une dimension contenant un nombre de 1
     correspondant à la proportion donnée en input
