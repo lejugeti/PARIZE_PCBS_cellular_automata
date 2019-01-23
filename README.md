@@ -110,6 +110,7 @@ Comme je n'ai pas pu calculer les données par manque de puissance de calcul, j'
 Il serait intéressant de réaliser des stats sur les données pour voir si les distributions sont différentes, et si leur dispersion le sont également, comme le suggèrent les graphs générés par "exemple_plot.py".
 
 ![Figure 1](https://github.com/lejugeti/PARIZE_PCBS_cellular_automata/blob/master/exemple_de_graphs/Figure_1.png?raw=true "distribution des proportions de population avec un nombre de surpopulation de 3 en fonction du nombre de survie")
+![Figure 2](https://github.com/lejugeti/PARIZE_PCBS_cellular_automata/blob/master/exemple_de_graphs/Figure_2.png?raw=true "distribution des proportions de population avec un nombre de surpopulation de 4 en fonction du nombre de survie")
 
 Ce que j'ai appris avec ce projet
 --
