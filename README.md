@@ -74,6 +74,22 @@ Par exemple :
     plt.legend(loc = 0) #avec 0 pour la meilleure position de légendes
     plt.show()
 
+
+Enfin, j'ai implémenté une mise en cache des résultats grâce au module joblib, ce qui permet de reprendre les calculs au point où on avait arrêté. Cela est bien pratique vu le nombre de calculs à réaliser pour l'entièreté du projet.
+J'ai du coup utilisé Memory de joblib pour définir un décorateur sur proportion_moyenne. Cela permet de sauvegarder les informations déjà calculées dans le dossier cache_cell_auto.
+L'utilisation de cette mise en cache recquiert le passage du paramètre i_sim dans la fonction proportion_moyenne. Ce paramètre n'est pas réutilisé dans la fonction mais est nécessaire à la mise en cache sinon le programme attribue la même valeur à toutes les simulations pour une configuraton de paramètres.
+	
+	from joblib import Memory
+	#On crée un décorateur pour proportion_moyenne grâce à Memory de joblib pour
+	#mettre en cache les calculs déjà effectués comme il y a bcp de calculs à faire
+	memory = Memory('cache_cell_auto', verbose = 0)
+	@memory.cache
+	def proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE, i_sim):
+		"""renvoie la proportion moyenne de la population finale après N générations"""
+		pop = first_gen(proportion_initiale, TAILLE_GRILLE)
+		final_gen = final_generations(pop, nb_survie, nb_surpopulation, nb_naissance, NB_GENERATION)
+		return np.mean(final_gen)
+	
 Hypothèses
 --
 
@@ -85,15 +101,19 @@ Hypothèses
 Résultats
 --
 
-Malheureusement, comme le programme demande une grande puissance de calcul et prend beaucoup de temps, je n'ai pas pu calculer les données par manque de matériel. J'ai essayé d'implémenter la mise en cache proposé par le module joblib pour pouvoir reprendre les calculs plusieurs fois, mais le programme ne calculait pas correctement les valeurs. En fait, il assignait la même valeur à toutes les simulations, j'ai donc abandonné. Il serait néanmoins intéressant d'implémenter cette mise en cache et un traitement parallèle des calculs grâce à ce module pour pouvoir réaliser les simulations assez rapidement.
+Malheureusement, comme le programme demande une grande puissance de calcul et prend beaucoup de temps, je n'ai pas pu calculer les données par manque de matériel. J'ai essayé d'implémenter la mise en cache proposé par le module joblib pour pouvoir reprendre les calculs plusieurs fois, mais le programme nécessite quand même beaucoup trop de mesures pour ma machine, je n'ai donc pas pu tout calculer.
 
 Comme je n'ai pas pu calculer les données par manque de puissance de calcul, j'ai réalisé un fichier d'exemple de plot possible dans le dossier "exemple_de_graphs". En faisant tourner le fichier "exemple_plot.py", vous aurez un aperçu des distributions des proportions de cellules pour toutes les valeurs de survie en fonction de variables fixées arbitrairement. J'avais prévu au départ de limiter les graphs à certaines valeurs de survie, naissance, surpopulation et proportions initiales comme en témoigne le fichier "distplot.py", et c'est donc un peu ce que j'ai fait dans "exemple_plot.py".
 Il serait intéressant de réaliser des stats sur les données pour voir si les distributions sont différentes, et si leur dispersion le sont également, comme le suggèrent les graphs générés par "exemple_plot.py".
 
+![Figure 1 : distribution des proportions de population avec un nombre de surpopulation de 3 en fonction du nombre de survie](/PARIZE_PCBS_cellular_automata/exemple_de_graphs/Figure_1.png)
 
 Ce que j'ai appris avec ce projet
 --
-En créant ce projet j'ai appris à manipuler numpy et les array du module. J'ai aussi pu voir des affichages graphiques simples grâce à pygame.
-J'ai aussi été légèrement introduit aux représentation graphiques des données avec matplotlib.pyplot et seaborn.
+Avant le projet je n'avais que des rudiments de python mais je ne savais pas grand chose, juste quelques bases d'algorithmique.
+En créant ce projet j'ai appris à manipuler numpy et les array du module. J'ai aussi pu voir des affichages graphiques simples grâce à pygame. Je me suis aussi intéressé aux décorateurs, à l'interpolation de string (fstring) et d'autres outils bien utiles dans la programmation avec python.
+J'ai aussi été légèrement introduit aux représentation graphiques de distribution des données avec matplotlib.pyplot et seaborn.
 
 J'ai aussi appris à "manipuler" github grâce au terminal. Je trouve ça super car ça m'a vraiment facilité la vie pendant les vacances, comme je travaillais tantôt sur un pc chez moi tantôt sur un autre lorsque j'étais en déplacement. J'aimerais bien faire un projet plus important et en groupe pour continuer à l'utiliser et à apprendre comment ça fonctionne (créer plusieurs branche, les fusionner ou même revenir à une version précédente du projet), car je n'ai pour l'instant utilisé que peu de commandes.
+
+En ce qui concerne 

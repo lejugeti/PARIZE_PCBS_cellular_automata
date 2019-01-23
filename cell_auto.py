@@ -4,7 +4,7 @@ Les résultats sont stockés dans un document texte pour pouvoir être réutilis
 
 import numpy as np
 from math import sqrt
-
+from joblib import Memory
 
 def first_gen(proportion, shape):
     """ retourne un vecteur mélangé à une dimension contenant un nombre de 1
@@ -54,9 +54,9 @@ def scan(m,n, pop):
 
 #On crée un décorateur pour proportion_moyenne grâce à Memory de joblib pour
 #mettre en cache les calculs déjà effectués comme il y a bcp de calculs à faire
-#memory = Memory('cache_cell_auto', verbose = 0)
-#@memory.cache
-def proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE):
+memory = Memory('cache_cell_auto', verbose = 0)
+@memory.cache
+def proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE, i_sim):
     """renvoie la proportion moyenne de la population finale après N générations"""
     pop = first_gen(proportion_initiale, TAILLE_GRILLE)
     final_gen = final_generations(pop, nb_survie, nb_surpopulation, nb_naissance, NB_GENERATION)
@@ -81,7 +81,7 @@ if __name__ == "__main__":
             for i_naiss, nb_naissance in enumerate(NB_NAISSANCE):
                 for i_prop, proportion_initiale in enumerate(PROP_INITIALE):
                     for i_sim in range(N_SIM):
-                        stats[i_surv, i_surpop, i_naiss, i_prop, i_sim] = proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE)
+                        stats[i_surv, i_surpop, i_naiss, i_prop, i_sim] = proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE,i_sim)
                         compteur += 1
                         print(f'{round(compteur*100/DECOMPTE_MESURES, 2)} %    prop = {stats[i_surv, i_surpop, i_naiss, i_prop, i_sim]}')
                         #utile pour voir la progression de l'algorithme
