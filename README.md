@@ -89,7 +89,10 @@ L'utilisation de cette mise en cache recquiert le passage du paramètre i_sim da
 		pop = first_gen(proportion_initiale, TAILLE_GRILLE)
 		final_gen = final_generations(pop, nb_survie, nb_surpopulation, nb_naissance, NB_GENERATION)
 		return np.mean(final_gen)
-	
+
+Cependant, le cache est beaucoup trop important pour que je puisse l'upload (ou en tout cas je n'ai pas réussi), à cause du trop grand nombre de dossiers que le programme crée. Il faudrait donc réaliser l'intégralité des mesures sur un ordinateur puis upload le résultat sur github, sans s'encombrer du cache.
+
+		
 Hypothèses
 --
 
@@ -106,7 +109,7 @@ Malheureusement, comme le programme demande une grande puissance de calcul et pr
 Comme je n'ai pas pu calculer les données par manque de puissance de calcul, j'ai réalisé un fichier d'exemple de plot possible dans le dossier "exemple_de_graphs". En faisant tourner le fichier "exemple_plot.py", vous aurez un aperçu des distributions des proportions de cellules pour toutes les valeurs de survie en fonction de variables fixées arbitrairement. J'avais prévu au départ de limiter les graphs à certaines valeurs de survie, naissance, surpopulation et proportions initiales comme en témoigne le fichier "distplot.py", et c'est donc un peu ce que j'ai fait dans "exemple_plot.py".
 Il serait intéressant de réaliser des stats sur les données pour voir si les distributions sont différentes, et si leur dispersion le sont également, comme le suggèrent les graphs générés par "exemple_plot.py".
 
-![Figure 1 : distribution des proportions de population avec un nombre de surpopulation de 3 en fonction du nombre de survie](/PARIZE_PCBS_cellular_automata/exemple_de_graphs/Figure_1.png)
+![Figure 1 : distribution des proportions de population avec un nombre de surpopulation de 3 en fonction du nombre de survie](https://github.com/lejugeti/PARIZE_PCBS_cellular_automata/blob/master/exemple_de_graphs/Figure_1.png)
 
 Ce que j'ai appris avec ce projet
 --
@@ -116,4 +119,3 @@ J'ai aussi été légèrement introduit aux représentation graphiques de distri
 
 J'ai aussi appris à "manipuler" github grâce au terminal. Je trouve ça super car ça m'a vraiment facilité la vie pendant les vacances, comme je travaillais tantôt sur un pc chez moi tantôt sur un autre lorsque j'étais en déplacement. J'aimerais bien faire un projet plus important et en groupe pour continuer à l'utiliser et à apprendre comment ça fonctionne (créer plusieurs branche, les fusionner ou même revenir à une version précédente du projet), car je n'ai pour l'instant utilisé que peu de commandes.
 
-En ce qui concerne 
