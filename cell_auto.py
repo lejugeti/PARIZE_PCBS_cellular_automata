@@ -83,7 +83,7 @@ if __name__ == "__main__":
                     for i_sim in range(N_SIM):
                         stats[i_surv, i_surpop, i_naiss, i_prop, i_sim] = proportion_moyenne(nb_survie, nb_surpopulation, nb_naissance , proportion_initiale, TAILLE_GRILLE,i_sim)
                         compteur += 1
-                        print(f'{round(compteur*100/DECOMPTE_MESURES, 2)} %    prop = {stats[i_surv, i_surpop, i_naiss, i_prop, i_sim]}')
+                        print(f'{round(compteur/DECOMPTE_MESURES, 2)} %    prop = {stats[i_surv, i_surpop, i_naiss, i_prop, i_sim]}')
                         #utile pour voir la progression de l'algorithme
 
 stats.dump("matrice_cell_auto.txt")

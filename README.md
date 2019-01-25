@@ -11,7 +11,7 @@ En fait, pour chaque case de la grille, l'automate va scanner les 8 cases
 directement adjacentes à la case d'intérêt, et va déterminer son état, à savoir
 "vivant" ou "mort", en fonction du nombre de cases vivantes. Cela est effectué grâce à la fonction scan définie dans le programme.
 
-    def scan(m,n, pop):
+    def scan(m,n,pop):
         """scanne les 8 cellules environnantes et renvoie le nombre de cellules vivantes"""
         return np.sum(pop[(m-1):(m+2), (n-1) : (n+2)]) - pop[m,n]
 
@@ -78,7 +78,7 @@ Par exemple :
 Enfin, j'ai implémenté une mise en cache des résultats grâce au module joblib, ce qui permet de reprendre les calculs au point où on avait arrêté. Cela est bien pratique vu le nombre de calculs à réaliser pour l'entièreté du projet.
 J'ai du coup utilisé Memory de joblib pour définir un décorateur sur proportion_moyenne. Cela permet de sauvegarder les informations déjà calculées dans le dossier cache_cell_auto.
 L'utilisation de cette mise en cache recquiert le passage du paramètre i_sim dans la fonction proportion_moyenne. Ce paramètre n'est pas réutilisé dans la fonction mais est nécessaire à la mise en cache sinon le programme attribue la même valeur à toutes les simulations pour une configuraton de paramètres.
-	
+
 	from joblib import Memory
 	#On crée un décorateur pour proportion_moyenne grâce à Memory de joblib pour
 	#mettre en cache les calculs déjà effectués comme il y a bcp de calculs à faire
@@ -92,7 +92,7 @@ L'utilisation de cette mise en cache recquiert le passage du paramètre i_sim da
 
 Cependant, le cache est beaucoup trop important pour que je puisse l'upload (ou en tout cas je n'ai pas réussi), à cause du trop grand nombre de dossiers que le programme crée. Il faudrait donc réaliser l'intégralité des mesures sur un ordinateur puis upload le résultat sur github, sans s'encombrer du cache.
 
-		
+
 Hypothèses
 --
 
@@ -119,4 +119,3 @@ En créant ce projet j'ai appris à manipuler numpy et les array du module. J'ai
 J'ai aussi été légèrement introduit aux représentation graphiques de distribution des données avec matplotlib.pyplot et seaborn.
 
 J'ai aussi appris à "manipuler" github grâce au terminal. Je trouve ça super car ça m'a vraiment facilité la vie pendant les vacances, comme je travaillais tantôt sur un pc chez moi tantôt sur un autre lorsque j'étais en déplacement. J'aimerais bien faire un projet plus important et en groupe pour continuer à l'utiliser et à apprendre comment ça fonctionne (créer plusieurs branche, les fusionner ou même revenir à une version précédente du projet), car je n'ai pour l'instant utilisé que peu de commandes.
-
